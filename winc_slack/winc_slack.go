@@ -19,8 +19,8 @@ func SendMessage(text string, pretext string, channelId string) {
 		slack.MsgOptionAttachments(attachment),
 	)
 	if err != nil {
-		fmt.Printf("%s\n", err)
-		return
+		panic(err)
 	}
+
 	fmt.Printf("Message successfully sent to channel %s at %s", channelID, timestamp)
 }
