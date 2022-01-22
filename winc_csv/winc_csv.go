@@ -35,6 +35,5 @@ func WriteCsv(content [][]string, fileName string) string {
 	if err != nil {
 		panic(err)
 	}
-
 	return f.Name()
 }
