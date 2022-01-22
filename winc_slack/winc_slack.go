@@ -6,16 +6,16 @@ import (
 	"github.com/slack-go/slack"
 )
 
-func SendMessage(message SlackMessage) {
+func SendMessage(text string, pretext string, channelId string) {
 	api := slack.New(TOKEN)
 	attachment := slack.Attachment{
-		Pretext: message.Pretext,
-		Text:    message.Text,
+		Pretext: pretext,
+		Text:    text,
 	}
 
 	channelID, timestamp, err := api.PostMessage(
-		message.ChannelID,
-		slack.MsgOptionText(message.Text, false),
+		channelId,
+		slack.MsgOptionText(text, false),
 		slack.MsgOptionAttachments(attachment),
 	)
 	if err != nil {
