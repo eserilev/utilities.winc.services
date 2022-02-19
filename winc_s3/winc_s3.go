@@ -12,7 +12,7 @@ import (
 )
 
 func UploadFile(bucket string, key string, content []byte) {
-	cfg, err := config.LoadDefaultConfig(context.TODO())
+	cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithSharedConfigProfile("default-winc"))
 	if err != nil {
 		panic(err)
 	}
@@ -32,7 +32,7 @@ func UploadFile(bucket string, key string, content []byte) {
 }
 
 func GetFile(bucket string, key string) *json.Decoder {
-	cfg, err := config.LoadDefaultConfig(context.TODO())
+	cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithSharedConfigProfile("default-winc"))
 	if err != nil {
 		panic(err)
 	}
