@@ -19,7 +19,7 @@ func UploadFile(bucket string, key string, content []byte) {
 
 	client := s3.NewFromConfig(cfg)
 
-	response, err := client.PutObject(context.TODO(), &s3.PutObjectInput{
+	_, err = client.PutObject(context.TODO(), &s3.PutObjectInput{
 		Bucket: aws.String(bucket),
 		Key:    aws.String(key),
 		Body:   bytes.NewReader(content),
@@ -28,7 +28,7 @@ func UploadFile(bucket string, key string, content []byte) {
 		panic(err)
 	}
 
-	fmt.Println("Uploaded version " + *response.VersionId + " of " + key + " to bucket " + bucket)
+	fmt.Println("Uploaded" + key + " to bucket " + bucket)
 }
 
 func GetFile(bucket string, key string) *json.Decoder {
