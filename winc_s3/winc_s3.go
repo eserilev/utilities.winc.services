@@ -12,7 +12,7 @@ import (
 )
 
 func UploadFile(bucket string, key string, content []byte) {
-	cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithSharedConfigProfile("default-winc"))
+	cfg, err := config.LoadDefaultConfig(context.TODO(), config.WithSharedConfigProfile("default-winc"), config.WithRegion("us-east-1"))
 	if err != nil {
 		panic(err)
 	}
